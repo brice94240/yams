@@ -1,0 +1,9 @@
+extends layouts/main.pug 
+
+block content
+    h1 Bienvenue !
+    div
+        h3 Liste des utilisateurs
+        ul
+            each user in users
+                li= "Prénom : " + user.firstName + " " + " | Email : " + user.email
