@@ -1,5 +1,17 @@
 extends layouts/main.pug 
 
 block content
-    h1 Bienvenue #{firstName} !
-    p Page sécurisée
+    h1 Hello #{user.firstName}
+    ul
+        each dice in dices ? dices : []
+            li= dice.number
+    div 
+        a(href="/play") Jouer
+    div
+        p #{message}
+
+    ul
+        each pastry in wonPastries ? wonPastries : []
+            li= pastry.name
+
+    p #{pastriesCount}
