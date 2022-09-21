@@ -7,5 +7,5 @@ export default function(req, res){
         return;
     }
     
-    res.render("home", { message : req.session.message });
+    res.send({ message : req.session.message });
 }

@@ -1,7 +1,9 @@
 import express from "express";
 import session from "express-session";
+import cors from "cors";
 import userRouter from "./routers/user.js";
 import loginRouter from "./routers/login.js";
+
 
 const app = express();
 const port = 3002;
@@ -10,6 +12,7 @@ app.set("view engine", "pug");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.use(
   session({

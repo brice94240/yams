@@ -4,6 +4,8 @@ import bcrypt from "bcrypt";
 
 
 export default async function (req, res) {
+  const testReact = "React c'est cool";
+
   const { email, password } = req.body;
 
   let { message } = req.session;
@@ -29,5 +31,5 @@ export default async function (req, res) {
       message = "Veuillez remplir tous les champs";
     }
     
-  res.render("login", { message });
+  res.send({ message, testReact: testReact });
 }

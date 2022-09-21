@@ -164,7 +164,7 @@ export default async function (req, res) {
     console.log(req.session.pastriesCount);
     await updateOne(userId, req.session.pastriesCount);
 
-    res.render("game", {
+    res.send({
       dices: dicesLaunch,
       user: user,
       message: message,

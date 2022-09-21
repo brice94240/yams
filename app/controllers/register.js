@@ -33,5 +33,5 @@ export default async function (req, res) {
         message = "Veuillez renseigner tous les champs"
     }
 
-  res.render("register", { message });
+  res.send({ message });
 }

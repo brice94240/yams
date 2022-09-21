@@ -6,5 +6,5 @@ export default async function (req, res) {
 
   const user = await find(userId);
 
-  res.render("game", { user: user });
+  res.send({ user: user });
 }
