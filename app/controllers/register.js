@@ -1,4 +1,5 @@
 import { insertOne } from "../models/User.js";
+import { all } from "../models/Pastry.js";
 import bcrypt from "bcrypt";
 
 export default async function (req, res) {
@@ -6,6 +7,8 @@ export default async function (req, res) {
     const { firstname, lastname, email, password, passwordCheck } = req.body;
 
     let { message } = req.session;
+
+    const allPastries = await all();
 
     if (firstname && lastname && email && password && passwordCheck) {
 
@@ -17,6 +20,9 @@ export default async function (req, res) {
               lastName: lastname,
               email: email,
               password: hashPass,
+              pastriesCount: 0,
+              pastries: allPastries,
+              wonPastries: [],
             };
 
             const newUser = await insertOne(userObj);

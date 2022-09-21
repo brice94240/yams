@@ -42,3 +42,36 @@ export async function insertOne(user) {
   return;
 }
 
+export async function updateOne(userId, pastriesCount) {
+  const conn = await connect();
+
+  await UserModel.findOneAndUpdate(
+    { _id: userId },
+    { pastriesCount: pastriesCount }
+  );
+
+  return;
+}
+
+export async function updatePastries(userId, pastries) {
+  const conn = await connect();
+
+  await UserModel.findOneAndUpdate(
+    { _id: userId },
+    { pastries: pastries }
+  );
+
+  return;
+}
+
+export async function updateWonPastries(userId, pastry) {
+  const conn = await connect();
+
+  await UserModel.findOneAndUpdate(
+    { _id: userId },
+    { $push: { wonPastries: pastry } }
+  );
+
+  return;
+}
+

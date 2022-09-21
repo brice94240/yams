@@ -8,7 +8,6 @@ export async function connect() {
   });
 }
 
-
 export async function all() {
   const conn = await connect();
 
@@ -25,11 +24,3 @@ export async function find(id) {
   return pastry;
 }
 
-
-export async function updateOne(pastryId, nb) {
-  const conn = await connect();
-
-  await PastryModel.findOneAndUpdate({ _id: pastryId }, { number: nb });
-
-  return;
-}

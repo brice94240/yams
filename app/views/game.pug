@@ -10,8 +10,4 @@ block content
     div
         p #{message}
 
-    ul
-        each pastry in wonPastries ? wonPastries : []
-            li= pastry.name
-
-    p #{pastriesCount}
+    p #{user.pastriesCount}

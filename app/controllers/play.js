@@ -1,15 +1,17 @@
-import { find } from "../models/User.js";
-import { all, updateOne } from "../models/Pastry.js";
+import { find, updateOne, updatePastries, updateWonPastries } from "../models/User.js";
 
-let wonPastries = [];
 
 export default async function (req, res) {
   let message;
   let pastriesNb = 0;
 
-  let { userId, pastriesCount } = req.session;
+  let { userId } = req.session;
 
   const user = await find(userId);
+
+  let userPastries = user.pastries;
+
+  const userWonPastries = user.wonPastries;
 
   let dices = [
     { id: 1, number: null },
@@ -21,82 +23,150 @@ export default async function (req, res) {
 
   const launch = async (dices) => {
     dices.map((dice) => {
-      dice.number = Math.floor(Math.random() * 2) + 1;
+      dice.number = Math.floor(Math.random() * 6) + 1;
     });
     return dices;
   };
 
   const dicesLaunch = await launch(dices);
+    
+    const count = {};
 
-  const count = {};
+    const dicesArr = [];
+    dicesLaunch.forEach((dice) => dicesArr.push(dice.number));
 
-  const dicesArr = [];
-  dicesLaunch.forEach((dice) => dicesArr.push(dice.number));
+    dicesArr.forEach((element) => {
+      count[element] = (count[element] || 0) + 1;
+    });
 
-  dicesArr.forEach((element) => {
-    count[element] = (count[element] || 0) + 1;
-  });
+    const countArr = Object.values(count);
 
-  const countArr = Object.values(count);
-
-  if (countArr.filter((nb) => nb >= 2).length === 2) {
-    pastriesNb += 1;
-    message = "Vous avez 2 paires";
-  } else if (countArr.filter((nb) => nb === 4).length === 1) {
-    pastriesNb += 2;
-    message = "Vous avez un carré";
-  } else if (countArr.filter((nb) => nb === 5).length === 1) {
-    pastriesNb += 3;
-    message = "YAAAAAAAAAAAMS";
-  } else {
-    message = "Vous n'avez rien gagné. Rejouer.";
-  }
-
-  const allPastries = await all();
-
-  for (let i = 0; i < pastriesNb; i++) {
-    const random = Math.floor(Math.random() * 36) + 1;
-    switch (true) {
-      case random <= 1:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 1));
-        break;
-      case random <= 3:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 2));
-        break;
-      case random <= 6:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 3));
-        break;
-      case random <= 10:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 4));
-        break;
-      case random <= 15:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 5));
-        break;
-      case random <= 21:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 6));
-        break;
-      case random <= 28:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 7));
-        break;
-      case random <= 36:
-        wonPastries.push(allPastries.find((pastry) => pastry.order === 8));
-        break;
-      default:
-        break;
+    if (countArr.filter((nb) => nb >= 2).length === 2) {
+      pastriesNb += 1;
+      message = "Vous avez 2 paires";
+    } else if (countArr.filter((nb) => nb === 4).length === 1) {
+      pastriesNb += 2;
+      message = "Vous avez un carré";
+    } else if (countArr.filter((nb) => nb === 5).length === 1) {
+      pastriesNb += 3;
+      message = "YAAAAAAAAAAAMS";
+    } else {
+      message = "Vous n'avez rien gagné. Rejouer.";
     }
-  }
 
-   pastriesCount = wonPastries.length;
+    for (let i = 0; i < pastriesNb; i++) {
+      const random = Math.floor(Math.random() * 36) + 1;
+      switch (true) {
+        case random <= 1:
+          userPastries.map((pastry) => {
+            if (pastry.order === 1) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 1)
+          );
+          break;
+        case random <= 3:
+          userPastries.map((pastry) => {
+            if (pastry.order === 2) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 2)
+          );
+          break;
+        case random <= 6:
+          userPastries.map((pastry) => {
+            if (pastry.order === 3) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 3)
+          );
+          break;
+        case random <= 10:
+          userPastries.map((pastry) => {
+            if (pastry.order === 4) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 4)
+          );
+          break;
+        case random <= 15:
+          userPastries.map((pastry) => {
+            if (pastry.order === 5) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 5)
+          );
+          break;
+        case random <= 21:
+          userPastries.map((pastry) => {
+            if (pastry.order === 6) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 6)
+          );
+          break;
+        case random <= 28:
+          userPastries.map((pastry) => {
+            if (pastry.order === 7) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 7)
+          );
+          break;
+        case random <= 36:
+          userPastries.map((pastry) => {
+            if (pastry.order === 8) {
+              pastry.number -= 1;
+            }
+          });
+          await updatePastries(userId, userPastries);
+          await updateWonPastries(
+            userId,
+            userPastries.find((pastry) => pastry.order === 8)
+          );
+          break;
+        default:
+          break;
+      }
+    }
 
-  if (pastriesCount >= 10) {
-    wonPastries = [];
-  }
+    console.log(user.wonPastries.length);
+    
+    req.session.pastriesCount = user.wonPastries.length;
+    console.log(req.session.pastriesCount);
+    await updateOne(userId, req.session.pastriesCount);
 
-  res.render("game", {
-    dices: dicesLaunch,
-    user: user,
-    message: message,
-    wonPastries: wonPastries,
-    pastriesCount: pastriesCount,
-  });
+    res.render("game", {
+      dices: dicesLaunch,
+      user: user,
+      message: message,
+    });
 }

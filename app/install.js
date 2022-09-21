@@ -32,16 +32,19 @@ async function hydrate() {
       }
     }
 
+    const newPastries = Pastries; 
+
+    await PastryModel.insertMany(newPastries);
+
     const newUser = new UserModel({
       firstName: "firstname",
       lastName: "lastname",
       email: "user@mail.com",
       password: "$2b$10$6OJ6vBDKZIo1wtfZThg1IO7W3str5VwCxtHJ2xM1bHz5tS3t5KOWy",
+      pastriesCount: 0,
+      pastries: newPastries,
+      wonPastries: []
     });
-
-    const newPastries = Pastries; 
-
-    await PastryModel.insertMany(newPastries);
 
     await newUser.save();
 }

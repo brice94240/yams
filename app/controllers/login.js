@@ -28,6 +28,6 @@ export default async function (req, res) {
     } else if (email === "" || password === "") {
       message = "Veuillez remplir tous les champs";
     }
-
+    
   res.render("login", { message });
 }
