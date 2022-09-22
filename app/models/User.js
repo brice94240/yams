@@ -49,7 +49,7 @@ export async function updateOne(userId, pastriesCount) {
     { _id: userId },
     { pastriesCount: pastriesCount }
   );
-
+  
   return;
 }
 

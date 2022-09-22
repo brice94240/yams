@@ -58,3 +58,11 @@
 {"t":{"$date":"2022-09-22T10:25:47.272Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"find","class":"Collection","db":"test","coll":"users","arguments":{"query":{},"options":{}}}}
 {"t":{"$date":"2022-09-22T10:26:50.863Z"},"s":"I","c":"MONGOSH","id":1000000007,"ctx":"repl","msg":"Evaluating input","attr":{"input":"db.users.find({})"}}
 {"t":{"$date":"2022-09-22T10:26:50.871Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"find","class":"Collection","db":"test","coll":"users","arguments":{"query":{},"options":{}}}}
+{"t":{"$date":"2022-09-22T11:49:37.727Z"},"s":"I","c":"MONGOSH","id":1000000007,"ctx":"repl","msg":"Evaluating input","attr":{"input":"db.users.find({})"}}
+{"t":{"$date":"2022-09-22T11:49:37.739Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"find","class":"Collection","db":"test","coll":"users","arguments":{"query":{},"options":{}}}}
+{"t":{"$date":"2022-09-22T11:54:15.380Z"},"s":"I","c":"MONGOSH","id":1000000007,"ctx":"repl","msg":"Evaluating input","attr":{"input":"db.users.find({})"}}
+{"t":{"$date":"2022-09-22T11:54:15.392Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"find","class":"Collection","db":"test","coll":"users","arguments":{"query":{},"options":{}}}}
+{"t":{"$date":"2022-09-22T11:57:14.749Z"},"s":"I","c":"MONGOSH","id":1000000007,"ctx":"repl","msg":"Evaluating input","attr":{"input":"db.users.find({})"}}
+{"t":{"$date":"2022-09-22T11:57:14.755Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"find","class":"Collection","db":"test","coll":"users","arguments":{"query":{},"options":{}}}}
+{"t":{"$date":"2022-09-22T11:57:25.906Z"},"s":"I","c":"MONGOSH","id":1000000007,"ctx":"repl","msg":"Evaluating input","attr":{"input":"db.users.find({})"}}
+{"t":{"$date":"2022-09-22T11:57:25.922Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"find","class":"Collection","db":"test","coll":"users","arguments":{"query":{},"options":{}}}}
