@@ -45,7 +45,7 @@ export async function insertOne(user) {
 export async function updateOne(userId, pastriesCount) {
   const conn = await connect();
 
-  await UserModel.findOneAndUpdate(
+  await UserModel.updateOne(
     { _id: userId },
     { pastriesCount: pastriesCount }
   );
@@ -56,7 +56,7 @@ export async function updateOne(userId, pastriesCount) {
 export async function updatePastries(userId, pastries) {
   const conn = await connect();
 
-  await UserModel.findOneAndUpdate(
+  await UserModel.updateOne(
     { _id: userId },
     { pastries: pastries }
   );
@@ -67,7 +67,7 @@ export async function updatePastries(userId, pastries) {
 export async function updateWonPastries(userId, pastry) {
   const conn = await connect();
 
-  await UserModel.findOneAndUpdate(
+  await UserModel.updateOne(
     { _id: userId },
     { $push: { wonPastries: pastry } }
   );

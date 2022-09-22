@@ -1,13 +1,12 @@
 import { find, updateOne, updatePastries, updateWonPastries } from "../models/User.js";
 
-
 export default async function (req, res) {
   let message;
   let pastriesNb = 0;
 
   let { userId } = req.session;
 
-  const user = await find(userId);
+  let user = await find(userId);
 
   let userPastries = user.pastries;
 
@@ -56,8 +55,107 @@ export default async function (req, res) {
 
     for (let i = 0; i < pastriesNb; i++) {
       const random = Math.floor(Math.random() * 36) + 1;
-      switch (true) {
-        case random <= 1:
+      // switch (true) {
+      //   case random <= 1:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 1) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 1)
+      //     );
+      //     break;
+      //   case random <= 3:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 2) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 2)
+      //     );
+      //     break;
+      //   case random <= 6:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 3) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 3)
+      //     );
+      //     break;
+      //   case random <= 10:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 4) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 4)
+      //     );
+      //     break;
+      //   case random <= 15:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 5) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 5)
+      //     );
+      //     break;
+      //   case random <= 21:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 6) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 6)
+      //     );
+      //     break;
+      //   case random <= 28:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 7) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 7)
+      //     );
+      //     break;
+      //   case random <= 36:
+      //     userPastries.map((pastry) => {
+      //       if (pastry.order === 8) {
+      //         pastry.number -= 1;
+      //       }
+      //     });
+      //     await updatePastries(userId, userPastries);
+      //     await updateWonPastries(
+      //       userId,
+      //       userPastries.find((pastry) => pastry.order === 8)
+      //     );
+      //     break;
+      //   default:
+      //     break;
+      // }
+      if (random <= 1){
           userPastries.map((pastry) => {
             if (pastry.order === 1) {
               pastry.number -= 1;
@@ -68,8 +166,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 1)
           );
-          break;
-        case random <= 3:
+      } else if(random <= 3){
           userPastries.map((pastry) => {
             if (pastry.order === 2) {
               pastry.number -= 1;
@@ -80,8 +177,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 2)
           );
-          break;
-        case random <= 6:
+      } else if (random <= 6){
           userPastries.map((pastry) => {
             if (pastry.order === 3) {
               pastry.number -= 1;
@@ -92,8 +188,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 3)
           );
-          break;
-        case random <= 10:
+      } else if (random <= 10){
           userPastries.map((pastry) => {
             if (pastry.order === 4) {
               pastry.number -= 1;
@@ -104,8 +199,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 4)
           );
-          break;
-        case random <= 15:
+      } else if(random <= 15){
           userPastries.map((pastry) => {
             if (pastry.order === 5) {
               pastry.number -= 1;
@@ -116,8 +210,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 5)
           );
-          break;
-        case random <= 21:
+      } else if(random <= 21){
           userPastries.map((pastry) => {
             if (pastry.order === 6) {
               pastry.number -= 1;
@@ -128,8 +221,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 6)
           );
-          break;
-        case random <= 28:
+      } else if(random <= 28){
           userPastries.map((pastry) => {
             if (pastry.order === 7) {
               pastry.number -= 1;
@@ -140,8 +232,7 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 7)
           );
-          break;
-        case random <= 36:
+      } else if(random <= 36){
           userPastries.map((pastry) => {
             if (pastry.order === 8) {
               pastry.number -= 1;
@@ -152,21 +243,16 @@ export default async function (req, res) {
             userId,
             userPastries.find((pastry) => pastry.order === 8)
           );
-          break;
-        default:
-          break;
+        }
       }
-    }
 
-    console.log(user.wonPastries.length);
-    
-    req.session.pastriesCount = user.wonPastries.length;
-    console.log(req.session.pastriesCount);
-    await updateOne(userId, req.session.pastriesCount);
+      await updateOne(userId, user.wonPastries.length);
+      user = await find(userId);
+      console.log(user.wonPastries);
 
-    res.render("game", {
-      dices: dicesLaunch,
-      user: user,
-      message: message,
-    });
+      res.render("game", {
+        dices: dicesLaunch,
+        user:  {...user},
+        message: message,
+      });
 }

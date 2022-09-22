@@ -1,0 +1,6 @@
+db.users.find({})
+clear
+cleqr
+db.users.find({})
+db.user.find({})
+db.user.find()
